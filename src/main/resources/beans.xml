@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="commander1" class="org.cuatrovientos.spring.Commander">
+		<constructor-arg name="name" value="Commander 1" />
+		<constructor-arg name="race" value="Alien 1" />
+	</bean>
+	
+	<bean id="commander2" class="org.cuatrovientos.spring.Commander">
+		<constructor-arg name="name" value="Commander 2" />
+		<constructor-arg name="race" value="Alien 2" />
+	</bean>
+	
+	<bean id="commander3" class="org.cuatrovientos.spring.Commander">
+		<constructor-arg name="name" value="Commander 3" />
+		<constructor-arg name="race" value="Alien 3" />
+	</bean>
+	
+	<bean id="general" class="org.cuatrovientos.spring.Commander">
+		<constructor-arg name="name" value="Commander 4" />
+		<constructor-arg name="race" value="Alien 4" />
+	</bean>
+	
+	<bean id="ship1" class="org.cuatrovientos.spring.Ship" p:name="ship1" p:type="type1" p:captain-ref="commander1">
+	</bean>
+	
+	<bean id="ship2" class="org.cuatrovientos.spring.Ship" p:name="ship2" p:type="type2" p:captain-ref="commander2">
+	</bean>
+	
+	<bean id="ship3" class="org.cuatrovientos.spring.Ship" p:name="ship3" p:type="type3" p:captain-ref="commander3">
+	</bean>
+	
+	<bean id="fleet" class="org.cuatrovientos.spring.Fleet"
+		autowire="byName">
+		<property name="starships">
+			<set>
+				<ref bean="ship1" />
+				<ref bean="ship2" />
+				<ref bean="ship3" />
+			</set>
+		</property>
+		
+	</bean>
+
+</beans>
